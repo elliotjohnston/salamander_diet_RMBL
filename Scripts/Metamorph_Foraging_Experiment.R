@@ -83,7 +83,7 @@ theme(legend.position = "none",
 
 diet_choice_PO
 
-#ggsave(diet_choice_PO, filename = "Outputs/meta_diet_choice_PO.png",  width = 18, height = 12, dpi = 100)
+ggsave(diet_choice_PO, filename = "Outputs/meta_diet_choice_PO.png",  width = 18, height = 12, dpi = 100)
 
 
 #plot - NFS
@@ -135,7 +135,7 @@ diet_choice_LFS =
 
 diet_choice_LFS
 
-#ggsave(diet_choice_LFS, filename = "Outputs/meta_diet_choice_LFS.png",  width = 18, height = 12, dpi = 100)
+ggsave(diet_choice_LFS, filename = "Outputs/meta_diet_choice_LFS.png",  width = 18, height = 12, dpi = 100)
 
 
 #plot - MFS
@@ -161,7 +161,7 @@ diet_choice_MFS =
 
 diet_choice_MFS
 
-#ggsave(diet_choice_MFS, filename = "Outputs/meta_diet_choice_MFS.png",  width = 18, height = 12, dpi = 100)
+ggsave(diet_choice_MFS, filename = "Outputs/meta_diet_choice_MFS.png",  width = 18, height = 12, dpi = 100)
 
 
 #plot - HFS
@@ -187,7 +187,7 @@ diet_choice_HFS =
 
 diet_choice_HFS
 
-#ggsave(diet_choice_HFS, filename = "Outputs/meta_diet_choice_HFS.png",  width = 18, height = 12, dpi = 100)
+ggsave(diet_choice_HFS, filename = "Outputs/meta_diet_choice_HFS.png",  width = 18, height = 12, dpi = 100)
 
 
 ##### Diet Choice - Alt. Viz. ####
@@ -218,7 +218,7 @@ meta_diet_mosq_plot =
 
 meta_diet_mosq_plot
 
-#ggsave(meta_diet_mosq_plot, filename = "Outputs/meta_diet_choice_mosq.png",  width = 18, height = 12, dpi = 100)
+ggsave(meta_diet_mosq_plot, filename = "Outputs/meta_diet_choice_mosq.png",  width = 18, height = 12, dpi = 100)
 
 
 #cope
@@ -244,7 +244,7 @@ meta_diet_cope_plot =
 
 meta_diet_cope_plot
 
-#ggsave(meta_diet_cope_plot, filename = "Outputs/meta_diet_choice_cope.png",  width = 18, height = 12, dpi = 100)
+ggsave(meta_diet_cope_plot, filename = "Outputs/meta_diet_choice_cope.png",  width = 18, height = 12, dpi = 100)
 
 
 #caddis
@@ -270,7 +270,7 @@ meta_diet_caddis_plot =
 
 meta_diet_caddis_plot
 
-#ggsave(meta_diet_caddis_plot, filename = "Outputs/meta_diet_choice_caddis.png",  width = 18, height = 12, dpi = 100)
+ggsave(meta_diet_caddis_plot, filename = "Outputs/meta_diet_choice_caddis.png",  width = 18, height = 12, dpi = 100)
 
 
 #fs
@@ -327,7 +327,7 @@ meta_rate_NFS =
 
 meta_rate_NFS
 
-#ggsave(meta_rate_NFS, filename = "Outputs/meta_fs_rate_NFS.png",  width = 12, height = 12, dpi = 100)
+ggsave(meta_rate_NFS, filename = "Outputs/meta_fs_rate_NFS.png",  width = 12, height = 12, dpi = 100)
 
 
 #plot - L FS
@@ -347,7 +347,7 @@ meta_rate_LFS =
 
 meta_rate_LFS
 
-#ggsave(meta_rate_LFS, filename = "Outputs/meta_fs_rate_LFS.png",  width = 12, height = 12, dpi = 100)
+ggsave(meta_rate_LFS, filename = "Outputs/meta_fs_rate_LFS.png",  width = 12, height = 12, dpi = 100)
 
 
 #plot - M FS
@@ -367,7 +367,7 @@ meta_rate_MFS =
 
 meta_rate_MFS
 
-#ggsave(meta_rate_MFS, filename = "Outputs/meta_fs_rate_MFS.png",  width = 12, height = 12, dpi = 100)
+ggsave(meta_rate_MFS, filename = "Outputs/meta_fs_rate_MFS.png",  width = 12, height = 12, dpi = 100)
 
 
 #plot - H FS
@@ -387,7 +387,7 @@ meta_rate_HFS =
 
 meta_rate_HFS
 
-#ggsave(meta_rate_HFS, filename = "Outputs/meta_fs_rate_HFS.png",  width = 12, height = 12, dpi = 100)
+ggsave(meta_rate_HFS, filename = "Outputs/meta_fs_rate_HFS.png",  width = 12, height = 12, dpi = 100)
 
 ##stats
 meta_fs_rate_max = meta_fs_rate %>% group_by(Treatment, Replicate) %>% slice(which.max(FS_Eaten))
@@ -453,7 +453,7 @@ mc_lfs_plot =
 
 mc_lfs_plot
 
-#ggsave(mc_lfs_plot, filename = "Outputs/mc_lfs.png",  width = 12, height = 12, dpi = 100)
+ggsave(mc_lfs_plot, filename = "Outputs/mc_lfs.png",  width = 12, height = 12, dpi = 100)
 
 mc_mfs = subset(manly_chesson_means, Treatment == "M FS")
 
@@ -469,7 +469,7 @@ mc_mfs_plot =
 
 mc_mfs_plot
 
-#ggsave(mc_mfs_plot, filename = "Outputs/mc_mfs.png",  width = 12, height = 12, dpi = 100)
+ggsave(mc_mfs_plot, filename = "Outputs/mc_mfs.png",  width = 12, height = 12, dpi = 100)
 
 
 mc_hfs = subset(manly_chesson_means, Treatment == "H FS")
@@ -486,7 +486,7 @@ mc_hfs_plot =
 
 mc_hfs_plot
 
-#ggsave(mc_hfs_plot, filename = "Outputs/mc_hfs.png",  width = 12, height = 12, dpi = 100)
+ggsave(mc_hfs_plot, filename = "Outputs/mc_hfs.png",  width = 12, height = 12, dpi = 100)
 
 
 mc_nfs = subset(manly_chesson_means, Treatment == "N FS")
@@ -503,7 +503,7 @@ mc_nfs_plot =
 
 mc_nfs_plot
 
-#ggsave(mc_nfs_plot, filename = "Outputs/mc_nfs.png",  width = 12, height = 12, dpi = 100)
+ggsave(mc_nfs_plot, filename = "Outputs/mc_nfs.png",  width = 12, height = 12, dpi = 100)
 
 ##stats
 manly_chesson$Box = str_c(manly_chesson$Treatment, "_", manly_chesson$Replicate)

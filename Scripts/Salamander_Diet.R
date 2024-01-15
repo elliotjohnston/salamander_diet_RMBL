@@ -241,8 +241,8 @@ meta_diet_biomass_full = meta_diet_biomass_full %>% arrange(Sample_ID)
 display.brewer.all(colorblindFriendly = TRUE) #second set of colors = good for categorical datasets
 
 levels(droplevels(meta_diet_biomass)$Diet_Category) #11 bins
-nb.cols <- 8
-mycolors <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
+nb.cols <- 11
+mycolors <- colorRampPalette(brewer.pal(11, "Set2"))(nb.cols)
 mycolors
 show_col(mycolors)
 
@@ -259,9 +259,9 @@ meta_diet_biomass_plot =
         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 5),
         axis.ticks.x = element_blank())
 
-#print(meta_diet_biomass_plot)
+print(meta_diet_biomass_plot)
 
-#ggsave(meta_diet_biomass_plot, filename = "Outputs/meta_diet_biomass_plot.png",  width = 24, height = 12, dpi = 100)
+ggsave(meta_diet_biomass_plot, filename = "Outputs/meta_diet_biomass_plot.png",  width = 24, height = 12, dpi = 100)
 
 
 #paedos
@@ -292,7 +292,7 @@ meta_diet_biomass_plot_FS =
 
 print(meta_diet_biomass_plot_FS)
 
-#ggsave(meta_diet_biomass_plot_FS, filename = "Outputs/meta_diet_biomass_plot_FS.pdf",  width = 18, height = 12, dpi = 100)
+ggsave(meta_diet_biomass_plot_FS, filename = "Outputs/meta_diet_biomass_plot_FS.png",  width = 18, height = 12, dpi = 100)
 
 
 ##histogram of fairy shrimp count in meta stomachs
@@ -364,7 +364,8 @@ meta_diet_biomass_FS = meta_diet_biomass_FS %>% relocate(SEX, .after = Salamande
 meta_diet_biomass_FS$SEX = car::recode(meta_diet_biomass_FS$SEX,"'Female?'='Female'")
 meta_diet_biomass_FS$SEX = as.factor(meta_diet_biomass_FS$SEX)
 
-#meta_diet_biomass_FS = subset(meta_diet_biomass_FS, SEX == "Male") #code for sex-specific graph
+#code for sex-specific graph. switch out to "Male" for male plots.
+meta_diet_biomass_FS = subset(meta_diet_biomass_FS, SEX == "Female")
 
 #average FS in gut over all individuals per pond
 meta_diet_biomass_FS = meta_diet_biomass_FS %>% group_by(Date_Sample_GF, Pond) %>% mutate(log_Boat_Net_Avg = mean(log_Boat_Net))
@@ -433,7 +434,7 @@ fs_stomach_v_pond_plot =
 
 print(fs_stomach_v_pond_plot)
 
-#ggsave(fs_stomach_v_pond_plot, filename = "Outputs/fs_stomach_v_pond.png",  width = 18, height = 12, dpi = 100)
+ggsave(fs_stomach_v_pond_plot, filename = "Outputs/fs_stomach_v_pond.png",  width = 18, height = 12, dpi = 100)
 
 #what's going on with the points in the upper left - interpretations?
 
@@ -470,7 +471,8 @@ meta_diet_biomass_FS = meta_diet_biomass_FS %>% relocate(Percent_Diet_FS, .after
 
 #write.csv(meta_diet_biomass_FS, "Data/Meta_Percent_FS_Diet.csv")
 
-#meta_diet_biomass_FS = subset(meta_diet_biomass_FS, SEX == "Female") #code for sex-specific graph
+#code for sex-specific graph. switch out to "Male" for male plots.
+meta_diet_biomass_FS = subset(meta_diet_biomass_FS, SEX == "Female") 
 
 #average FS in gut over all individuals per pond
 meta_diet_biomass_FS = meta_diet_biomass_FS %>% group_by(Date_Sample_GF, Pond) %>% mutate(Percent_Diet_FS_Avg = mean(Percent_Diet_FS))
@@ -545,7 +547,7 @@ percent_fs_diet_plot =
 
 print(percent_fs_diet_plot)
 
-#ggsave(percent_fs_diet_plot, filename = "Outputs/percent_fs_diet_plot.png",  width = 18, height = 12, dpi = 100)
+ggsave(percent_fs_diet_plot, filename = "Outputs/percent_fs_diet_plot.png",  width = 18, height = 12, dpi = 100)
 
 
 ####### Community Diet Analyses #######
@@ -658,7 +660,6 @@ meta_diet_biomass_gather = t(meta_diet_biomass_gather)
 meta_diet_biomass_gather = as.data.frame(meta_diet_biomass_gather)
 
 plotweb(meta_diet_biomass_gather, method = "normal", labsize = 0.5, 
-        col.interaction=(ifelse(meta_diet_biomass_gather[2,] > 0.00001,'darkturquoise','grey80')), 
         col.low = c("#042333ff", 
         "#13306dff", "#253582ff", "#403891ff", "#6b4596ff", "#90548bff", "#b8627dff", "#de7065ff",
         "#f68f46ff", "#f9b641ff", "#efe350ff", "#ccebc5"),
@@ -714,7 +715,7 @@ head(data.scores.bc.sex)
 en_coord_cat = as.data.frame(scores(en, "factors"))
 
 
-#plot
+#plot (switch out grouping variable to generate other plots in manuscript [year, time period, bench, hydroperiod, and cohort])
 NMDS = data.frame(NMDS1 = meta_nmds_bc_sex$points[,1], NMDS2=meta_nmds_bc_sex$points[,2],group=meta_diet_env$Sex)
 NMDS.mean=aggregate(NMDS[,1:2],list(group=NMDS$group),mean)
 
@@ -761,7 +762,7 @@ bc_sex_plot =
 
 bc_sex_plot
 
-#ggsave(bc_sex_plot, filename = "Outputs/bc_sex_plot.png",  width = 16, height = 12, dpi = 100)
+ggsave(bc_sex_plot, filename = "Outputs/bc_sex_plot.png",  width = 16, height = 12, dpi = 100)
 
 #stats
 anosim_bc_sex = anosim(matrix_diet, meta_diet_biomass_ord$Sex, distance = "bray", permutations = 10000)
@@ -785,7 +786,7 @@ total_diet_biomass = total_diet_biomass %>% arrange(Diet_Category)
 total_diet_biomass = as.data.frame(total_diet_biomass)
 rownames(total_diet_biomass) <- total_diet_biomass[,1]
 
-pdf("pie_biomass_plot.pdf", bg = "transparent")
+png("pie_biomass_plot.png", bg = "transparent")
 
 pie(total_diet_biomass$Total_Biomass, init.angle=90, clockwise = TRUE, labels = "",
   col=c("#042333ff", "#13306dff", "#253582ff", "#403891ff", "#6b4596ff", "#90548bff", "#b8627dff", 
@@ -852,7 +853,7 @@ meta_recap_corr =
 
 meta_recap_corr
 
-#ggsave(meta_recap_corr, filename = "Outputs/meta_recap_corr.png",  width = 12, height = 12, dpi = 100)
+ggsave(meta_recap_corr, filename = "Outputs/meta_recap_corr.png",  width = 12, height = 12, dpi = 100)
   
 cor(salamander_recap_diet_x$NMDS1.x, salamander_recap_diet_x$NMDS1.y)
 cor(salamander_recap_diet_y$NMDS2.x, salamander_recap_diet_y$NMDS2.y)

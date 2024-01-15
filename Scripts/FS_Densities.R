@@ -3,6 +3,7 @@
 
 rm(list = ls())
 library(lubridate)
+library(glmmTMB)
 library(dplyr)
 library(ggplot2)
 library(scales)
@@ -363,7 +364,7 @@ fs_biomass_per_FS
 #FS getting big and new, small FS hatching later throughout summer. Or, FS could all hatch around the same
 #time and there are winners and losers in terms of growth.
 
-#ggsave(fs_biomass_per_FS, filename = "Outputs/fs_biomass_per_FS.pdf",  width = 18, height = 12, dpi = 100)
+ggsave(fs_biomass_per_FS, filename = "Outputs/fs_biomass_per_FS.png",  width = 18, height = 12, dpi = 100)
 
 
 #stats
@@ -413,7 +414,7 @@ fs_meansize_v_density =
 
 print(fs_meansize_v_density)
 
-#ggsave(fs_meansize_v_density, filename = "Outputs/fs_meansize_v_density.pdf",  width = 18, height = 12, dpi = 100)
+ggsave(fs_meansize_v_density, filename = "Outputs/fs_meansize_v_density.png",  width = 18, height = 12, dpi = 100)
 
 #mean FS size is more variable at lower densities! Biological interpretation? How much of this is driven
 #by low samples sizes (e.g, pond 55)? Put sample sizes next to pond in legend when present this.
@@ -443,7 +444,7 @@ fs_maxsize_v_density =
 
 print(fs_maxsize_v_density)
 
-#ggsave(fs_maxsize_v_density, filename = "Outputs/fs_maxsize_v_density.pdf",  width = 18, height = 12, dpi = 100)
+ggsave(fs_maxsize_v_density, filename = "Outputs/fs_maxsize_v_density.png",  width = 18, height = 12, dpi = 100)
 
 #stats
 #what to run? Quantile regression?
@@ -477,7 +478,7 @@ fs_modesize_v_density =
 
 print(fs_modesize_v_density)
 
-#ggsave(fs_modesize_v_density, filename = "Outputs/fs_modesize_v_density.pdf",  width = 18, height = 12, dpi = 100)
+ggsave(fs_modesize_v_density, filename = "Outputs/fs_modesize_v_density.png",  width = 18, height = 12, dpi = 100)
 
 #not much of a different story than mean and max plots
 
