@@ -676,7 +676,7 @@ matrix_diet = as.matrix(meta_diet_comm)
 
 #plot bray-curtis & jaccard nmds for date_sample_block and sex
 
-####### (ii) Bray-Curits Sex#####
+####### (ii) Bray-Curits Plots#####
 #https://jkzorz.github.io/2019/07/02/Indicator-species-analysis.html
 #https://jkzorz.github.io/2019/06/11/ANOSIM-test.html
 
@@ -762,7 +762,7 @@ bc_sex_plot =
 
 bc_sex_plot
 
-ggsave(bc_sex_plot, filename = "Outputs/bc_sex_plot.png",  width = 16, height = 12, dpi = 100)
+# ggsave(bc_sex_plot, filename = "Outputs/bc_sex_plot.png",  width = 16, height = 12, dpi = 100)
 
 #stats
 anosim_bc_sex = anosim(matrix_diet, meta_diet_biomass_ord$Sex, distance = "bray", permutations = 10000)
