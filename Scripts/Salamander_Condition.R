@@ -7,7 +7,6 @@ rm(list = ls())
 #remotes::install_github("Ajfrick/ajfhelpR", force = T)
 library(ajfhelpR)
 library(lubridate)
-library(dplyr)
 library(MASS)
 library(lme4)
 library(lattice)
@@ -16,16 +15,19 @@ library(ggplot2)
 library(visreg)
 library(viridis)
 library(sjPlot)
+library(dplyr)
 
 
 salamander <- read.csv(file = "Data/Salamander_Master.csv", stringsAsFactors = FALSE)
 meta_percent_FS_diet <- read.csv(file = "Data/Meta_Percent_FS_Diet.csv", stringsAsFactors = FALSE)
-  
+meta_diet_total <- read.csv(file = "Data/Meta_Diet_Total.csv", stringsAsFactors = FALSE)
+
 salamander$Field1 <- NULL
 salamander$WEIGHT <- salamander$WEIGHT * 1000 #convert from g to mg to make on same scale as FS
 
 meta_percent_FS_diet$X <- NULL
 
+meta_diet_total$X <- NULL
 
 #subset data to 2021 and 2022 metas
 salamander$DATEOFYEAR = dmy(salamander$DATEOFYEAR)
@@ -188,7 +190,7 @@ condition_sex_plot =
 
 condition_sex_plot
 
-ggsave(condition_sex_plot, filename = "Outputs/condition_sex_plot.png",  width = 16, height = 12, dpi = 100)
+# ggsave(condition_sex_plot, filename = "Outputs/condition_sex_plot.png",  width = 16, height = 12, dpi = 100)
 
 salamander_FSingut = merge(salamander_FSingut, meta_percent_FS_diet[,c("Sample_ID_Year", "Percent_Diet_FS")], by = "Sample_ID_Year", all.x = T)
 meta_high_condition = subset(salamander_FSingut, Condition > 0.399)

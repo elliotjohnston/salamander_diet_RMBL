@@ -458,6 +458,14 @@ tab_model(fs_stomach_v_pond, show.reflvl = TRUE, show.re.var = TRUE)
 
 meta_diet_biomass_full_total = meta_diet_biomass_full %>% group_by(Sample_ID_Year) %>% mutate(Total_Diet_Biomass = sum(Boat_Net))
 
+meta_diet_biomass_full_total <- 
+  meta_diet_biomass_full_total %>% 
+  dplyr::select(Sample_ID_Year, Salamander_ID, Date_Sample, 
+         Total_Diet_Biomass) %>% 
+  unique()
+
+#write.csv(meta_diet_biomass_full_total, "Data/Meta_Diet_Total.csv")
+
 
 ####### Percent Diet FS ~ Pond FS  #######
 meta_diet_biomass_full = meta_diet_biomass_full %>% group_by(Sample_ID_Year) %>% mutate(Percent_Diet = Boat_Net/sum(Boat_Net))
